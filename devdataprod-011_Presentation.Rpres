@@ -1,0 +1,51 @@
+Mortgage Comparison and Visualization Tool
+========================================================
+author: WGC
+date: February 22, 2015
+
+Introduction
+========================================================
+
+Consumers who are considering getting a mortgage or refinancing an existing
+one sometimes have difficulties in determining how much the full mortgage (principal and interest)
+will cost during its lifetime. This tool will allow the user to:
+
+- Easily compare the full cost of two mortgages
+- Visualize the difference in these costs
+- Visually compare the differences in key mortgage data
+
+Example
+========================================================
+
+To illustrate the problem that consumers have in comparing mortgages, which of the following two mortgages both with a principal of $100,000 do *you* think results in the **lowest** total payments at the end of its life?
+
+Mortgage A:
+- Annual Interest Rate: 10%
+- Length of mortgage: 10 years
+
+Mortgage B:
+- Annual Interest Rate: 5%
+- Length of mortgage: 20 years
+
+Mortgage Calculation
+========================================================
+Mortgage A Total Payment
+```{r, echo=TRUE}
+P<-100000;I<-10;L<-10;R<-I/(100*12)
+R<-I/(100*12);Pmt<-P*R/(1-(1+R)^(-L* 12))
+TotalPmtA<-Pmt*L*12;TotalPmtA
+```
+Mortgage B Total Payment
+```{r, echo=TRUE}
+P<-100000;I<-5;L<-20;R<-I/(100*12)
+R<-I/(100*12);Pmt<-P*R/(1-(1+R)^(-L* 12))
+TotalPmtB<-Pmt*L*12;TotalPmtB
+```
+
+Conclusion
+========================================================
+Despite Mortage A being half the length of Mortgage B, the fact that the interest rate of A is twice that of B results in it being slightly more expensive overall, costing $`r format(round(TotalPmtA-TotalPmtB, 2), decimal.mark=".", big.mark=",", nsmall = 2)` more.
+
+With this in mind, you should now explore the [Mortgage Comparison and Visualization Tool](http://colangw.shinyapps.io/devdataprod-011_Project).
+
+Thanks!
